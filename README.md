@@ -1,4 +1,4 @@
-# vuecms
+# Small content manangement system 
 
 > vuejs & firebase cms
 

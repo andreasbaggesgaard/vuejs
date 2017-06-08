@@ -1,4 +1,4 @@
-## Small content management system build in Vue.js & Firebase
+## Small Content Management System build in Vue.js & Firebase
 
 > vuejs & firebase cms
 

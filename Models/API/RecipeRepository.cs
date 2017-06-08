@@ -11,7 +11,7 @@ namespace AspNetVue.Models
 		public RecipeRepository(RecipeContext context)
 		{
 			_context = context;
-            int count = 240;
+            int count = 240; 
 
             if (_context.Recipes.Count() < 1440)
             {

@@ -1,4 +1,4 @@
-# vuejs
+# Vue.js
 
 All the code for my learning experience with Vue.js. It covers basic workflow and then goes deeper with what Vue.js has to offer.  
 
@@ -10,4 +10,4 @@ Projects: (Check the branches)
 
 The master branch contains the code for the Vue.js integration with ASP.NET Core
 <br /><br/>
-<img width="1267" alt="skaermbillede 2017-06-08 kl 21 02 51" src="https://user-images.githubusercontent.com/17901373/26945969-e800877c-4c8d-11e7-9480-47ac80eb7024.png">
+![billede6](https://user-images.githubusercontent.com/17901373/26946032-25052506-4c8e-11e7-89ca-2ebf8883216c.png)

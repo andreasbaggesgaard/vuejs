@@ -8,6 +8,6 @@ Projects: (Check the branches)
 3. Reuseable list component project for Vue.js pdf guide.
 4. Recipe search/filtering page. Integrating Vue.js into a ASP.NET Core MVC project and using TypeScript instead of single file components.
 
-The master branch contains the code for the Vue.js integration with ASP.NET Core
+The master branch contains the code for the Vue.js integration with ASP.NET Core.
 <br /><br/>
 ![billede6](https://user-images.githubusercontent.com/17901373/26946032-25052506-4c8e-11e7-89ca-2ebf8883216c.png)

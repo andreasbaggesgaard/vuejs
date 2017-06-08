@@ -1,6 +1,6 @@
-# mentorexam
+# pdf guide for Vue.js
 
-> Mentor course exam for advanced JavaScript - Vuejs
+> Reuseable list component project
 
 ## Build Setup
 

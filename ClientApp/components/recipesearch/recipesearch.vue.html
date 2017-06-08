@@ -1,0 +1,108 @@
+<template>
+    <div>
+
+        <div class="searchbox">
+            <div class="searchbox--container">
+                <div class="col-md-6">
+                    <div class="row">
+                        <form role="form" id="form-buscar">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input v-model="searchTerm" class="form-control" type="text" name="search" placeholder="Søg opskrifter" />
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-success search__button">
+                                            <i class="glyphicon glyphicon-search" aria-hidden="true"></i>
+                                        </button>
+                                        <button class="btn btn-default search__button--clear" v-on:click.prevent="clearSearch">Nulstil</button>
+                                    </span>
+                                    <span class="search__results" v-if="loading">
+                                        Loading..  &nbsp;<div class="sk-fading-circle"><div class="sk-circle1 sk-circle"></div><div class="sk-circle2 sk-circle"></div><div class="sk-circle3 sk-circle"></div><div class="sk-circle4 sk-circle"></div><div class="sk-circle5 sk-circle"></div><div class="sk-circle6 sk-circle"></div><div class="sk-circle7 sk-circle"></div><div class="sk-circle8 sk-circle"></div><div class="sk-circle9 sk-circle"></div><div class="sk-circle10 sk-circle"></div><div class="sk-circle11 sk-circle"></div><div class="sk-circle12 sk-circle"></div></div>
+                                    </span>
+                                    <span class="search__results" v-else>
+                                        {{countRecipes}} resultater 
+                                    </span>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="categories--selected">
+                        <div v-for="(item, index) in categoryList">
+                            <div v-if="item == 'nul-tredive'">
+                                <div class="search__button-tag" v-on:click="removeCategory(index, item)" v-bind:id="item" v-bind:class="item">0-30 min &nbsp;<span class="glyphicon glyphicon-remove" aria-hidden="true"></span></div>
+                            </div>
+                            <div v-else-if="item == 'en-to'">
+                                <div class="search__button-tag" v-on:click="removeCategory(index, item)" v-bind:id="item" v-bind:class="item">1-2 timer &nbsp;<span class="glyphicon glyphicon-remove" aria-hidden="true"></span></div>
+                            </div>
+                            <div v-else class="search__button-tag" v-on:click="removeCategory(index, item)" v-bind:id="item" v-bind:class="item">{{item}} &nbsp;<span class="glyphicon glyphicon-remove" aria-hidden="true"></span></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="categories">
+            <div class="row"> 
+                <div class="col-md-3">
+                    <h4>SÆSON</h4>
+                    <div id="Forår" class="categories--button">
+                        <div v-on:click="filterCategory" id="Forår"><span class="glyphicon glyphicon-unchecked" id="Forår"></span> Forår</div>
+                    </div>
+                    <div id="Sommer" class="categories--button">
+                        <div v-on:click="filterCategory" id="Sommer"><span class="glyphicon glyphicon-unchecked categories--button" id="Sommer"></span> Sommer</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <h4>TID</h4>
+                     <div id="nul-tredive" class="categories--button">
+                         <div v-on:click="filterCategory" id="nul-tredive"><span class="glyphicon glyphicon-unchecked categories--button" id="nul-tredive"></span> 0-30 min</div>
+                      </div>
+                    <div id="en-to" class="categories--button">
+                        <div v-on:click="filterCategory" id="en-to"><span class="glyphicon glyphicon-unchecked categories--button" id="en-to"></span> 1-2 timer</div>
+                    </div>
+                 </div>
+                <div class="col-md-3">
+                    <h4>TYPE</h4>
+                     <div id="Frokost" class="categories--button">
+                         <div v-on:click="filterCategory" id="Frokost"><span class="glyphicon glyphicon-unchecked categories--button" id="Frokost"></span> Frokost</div>
+                     </div>
+                    <div id="Hovedretter" class="categories--button">
+                        <div v-on:click="filterCategory" id="Hovedretter"><span class="glyphicon glyphicon-unchecked categories--button" id="Hovedretter"></span> Hovedretter</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <h4>ANLEDNING</h4>
+                     <div id="Hverdag" class="categories--button">
+                         <div v-on:click="filterCategory" id="Hverdag"><span class="glyphicon glyphicon-unchecked categories--button" id="Hverdag"></span> Hverdag</div>
+                      </div>
+                    <div id="Fest" class="categories--button">
+                        <div v-on:click="filterCategory" id="Fest"><span class="glyphicon glyphicon-unchecked categories--button" id="Fest"></span> Fest</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr />
+
+                <div class="recipes row">
+                    <div v-for="item in filteredRecipeList" v-if="filteredRecipeList">
+                        <div class="col-md-3 col-xs-12">
+                            <div class="recipe">
+                                <img v-bind:src="item.image" width="250" />
+                                <h5>{{item.name}}</h5>
+                                <span>{{item.category}}</span>
+                            </div><br /><br />
+                        </div>
+
+                    </div>
+
+                </div>
+               
+            </div>
+</template>
+
+<style src="./recipesearch.css" />
+<script src="./recipesearch.ts"></script>
+
+
+ 
